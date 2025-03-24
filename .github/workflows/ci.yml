@@ -62,7 +62,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'adoptopenjdk'  # Указуємо distribution для Java
+          distribution: 'temurin'  # Указуємо distribution для Java
 
       - name: Checkout repository
         uses: actions/checkout@v3
