@@ -41,15 +41,15 @@ jobs:
   #             core.setFailed("Не вдалося отримати номер PR");
   #             return;
   #           }
-
+  #
   #           const { data: reviews } = await github.rest.pulls.listReviews({
   #             owner: context.repo.owner,
   #             repo: context.repo.repo,
   #             pull_number: prNumber
   #           });
-
+  #
   #           const approved = reviews.some(review => review.state === 'APPROVED');
-
+  #
   #           if (!approved) {
   #             core.setFailed("Код-рев’ю не схвалено");
   #           }
@@ -61,7 +61,8 @@ jobs:
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
-         java-version: '17'
+          java-version: '17'
+          distribution: 'adoptopenjdk'  # Указуємо distribution для Java
 
       - name: Checkout repository
         uses: actions/checkout@v3
