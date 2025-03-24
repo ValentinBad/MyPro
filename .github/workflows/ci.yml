@@ -78,3 +78,16 @@ jobs:
             -Dsonar.organization=my-org \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
+
+      - name: Запуск flake8 через Reviewdog
+        uses: reviewdog/action-flake8@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+
+      - name: Запуск Black через Reviewdog
+        uses: reviewdog/action-black@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: info
