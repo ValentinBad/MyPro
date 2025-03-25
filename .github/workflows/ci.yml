@@ -63,7 +63,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'  # Указуємо distribution для Java
-
+          
+      - name: Ensure Java 17 is used
+        run: |
+          echo "JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64" >> $GITHUB_ENV
+          echo "PATH=$JAVA_HOME/bin:$PATH" >> $GITHUB_ENV
+          java -version  # Перевірка версії Java
+      
       - name: Checkout repository
         uses: actions/checkout@v3
 
