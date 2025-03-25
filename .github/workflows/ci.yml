@@ -80,18 +80,18 @@ jobs:
           cloc src/ > cloc-report.txt
           cat cloc-report.txt
 
-      - name: Run SonarQube analysis
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
-          unzip sonar-scanner-cli-4.8.0.2856-linux.zip
-          export PATH=$PATH:$(pwd)/sonar-scanner-4.8.0.2856-linux/bin
-          sonar-scanner -X \
-            -Dsonar.projectKey=MtPro \
-            -Dsonar.organization=my-org \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
+      # - name: Run SonarQube analysis
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+      #     unzip sonar-scanner-cli-4.8.0.2856-linux.zip
+      #     export PATH=$PATH:$(pwd)/sonar-scanner-4.8.0.2856-linux/bin
+      #     sonar-scanner -X \
+      #       -Dsonar.projectKey=MtPro \
+      #       -Dsonar.organization=my-org \
+      #       -Dsonar.host.url=https://sonarcloud.io \
+      #       -Dsonar.login=$SONAR_TOKEN
 
       - name: Запуск flake8 через Reviewdog
         uses: reviewdog/action-flake8@v2
